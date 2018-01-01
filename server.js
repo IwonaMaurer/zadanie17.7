@@ -1,9 +1,11 @@
 var express = require('express');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var bodyParser = require('body-parser');
+
+var googleProfile = {};
 var config = require('./config');
 var app = express();
-var googleProfile = {};
 
 passport.serializeUser(function(user, done) {
     done(null, user);
@@ -52,6 +54,7 @@ app.get('/auth/google/callback',
     }));
 
 app.listen(3000);
+console.log('Server localhost:3000');
 
 
 
